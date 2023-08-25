@@ -1,0 +1,6 @@
+var tramdoman = {"type":"FeatureCollection","features":[
+	{"type":"Feature","id":"tramdoman.1","geometry":{"type":"Point","coordinates":[106.85,10.83388889,0]},"geometry_name":"geom","properties":{"name":"Long Đại","y":10.833888889,"x":106.85}},
+	{"type":"Feature","id":"tramdoman.2","geometry":{"type":"Point","coordinates":[106.695,10.89833333,0]},"geometry_name":"geom","properties":{"name":"Lái Thiêu","y":10.898333333,"x":106.695}},
+	{"type":"Feature","id":"tramdoman.3","geometry":{"type":"Point","coordinates":[106.70722222,10.77527778,0]},"geometry_name":"geom","properties":{"name":"Thủ Thiêm","y":10.775277778,"x":106.707222222}},
+	{"type":"Feature","id":"tramdoman.4","geometry":{"type":"Point","coordinates":[106.79980224,10.76014632,0]},"geometry_name":"geom","properties":{"name":"Ngã 3 Cát Lái","y":10.760146323,"x":106.799802235}},
+	{"type":"Feature","id":"tramdoman.5","geometry":{"type":"Point","coordinates":[106.77894803,10.67399088,0]},"geometry_name":"geom","properties":{"name":"Nhà Bè","y":10.673990882,"x":106.778948029}}],"totalFeatures":5,"numberMatched":5,"numberReturned":5,"timeStamp":"2023-08-22T03:12:41.116Z","crs":{"type":"name","properties":{"name":"urn:ogc:def:crs:EPSG::4326"}}}

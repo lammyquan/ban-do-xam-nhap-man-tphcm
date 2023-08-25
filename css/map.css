@@ -1,0 +1,19 @@
+ #map { height: 97vh; }
+
+#fillter-div{
+position: absolute;
+	left: 90%;
+	background: #fff;
+	z-index: 99999;
+    bottom: 0;
+    padding: 3px;	
+}
+#coordinate{
+
+	position: absolute;
+	left: 40%;
+	background: #fff;
+	z-index: 99999;
+    bottom: 0;
+    padding: 3px;
+}
