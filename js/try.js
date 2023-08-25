@@ -91,11 +91,6 @@ var tramdoman = L.geoJson(tramdoman,{pointToLayer:function(feature, latlng){
 }}).addTo(map);
 
 
-var nongnghiep = L.geoJson(nongnghiep,{style:nongnghiepStyle,
-    onEachFeature:function (feature, layer) {
-    layer.bindPopup(feature.properties.refname) 
-}})//.addTo(map);
-
 //add raster 
 var RanhmanWMS = L.tileLayer.wms("http://localhost:8080/geoserver/geospatial/wms", {
     layers: 'geospatial:ManHCM_decimal',
@@ -120,9 +115,6 @@ var ranhmancontour =  L.tileLayer.wms("http://localhost:8080/geoserver/geospatia
 
 //Legend
 //layergroup
-//var datnongnghiep = L.layerGroup([nongnghiep, Nongnghiep]).addTo(map);
-
-//var Ranhman = L.layerGroup([ranhman, ranhmancontour]).addTo(map);
 
 
 //  Basemaps
