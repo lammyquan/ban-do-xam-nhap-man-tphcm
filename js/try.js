@@ -109,7 +109,7 @@ var Nongnghiep = L.tileLayer.wms("http://localhost:8080/geoserver/geospatial/wms
     format: 'image/png',
     transparent: true,
     attribution: ""
-})//.addTo(map); 
+}).addTo(map); 
 
 var ranhmancontour =  L.tileLayer.wms("http://localhost:8080/geoserver/geospatial/wms", {
     layers: 'geospatial:ranhmanhcm',
@@ -120,7 +120,7 @@ var ranhmancontour =  L.tileLayer.wms("http://localhost:8080/geoserver/geospatia
 
 //Legend
 //layergroup
-var datnongnghiep = L.layerGroup([nongnghiep, Nongnghiep]).addTo(map);
+//var datnongnghiep = L.layerGroup([nongnghiep, Nongnghiep]).addTo(map);
 
 //var Ranhman = L.layerGroup([ranhman, ranhmancontour]).addTo(map);
 
@@ -141,7 +141,7 @@ var overlays = {
     // "Roads": roadsLayer
     "Ranh giới": ranhgioihcm,
     "Trạm đo mặn": tramdoman,
-    "Đất nông nghiệp": datnongnghiep,
+    "Đất nông nghiệp": Nongnghiep,
     "Đường ranh mặn": ranhman,
     //"Mặn": RanhmanWMS,
  };
