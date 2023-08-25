@@ -1,13 +1,5 @@
  #map { height: 97vh; }
 
-#fillter-div{
-position: absolute;
-	left: 80%;
-	background: #fff;
-	z-index: 99999;
-    bottom: 2;
-    padding: 3px;	
-}
 #coordinate{
 
 	position: absolute;
