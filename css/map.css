@@ -2,10 +2,10 @@
 
 #fillter-div{
 position: absolute;
-	left: 90%;
+	left: 80%;
 	background: #fff;
 	z-index: 99999;
-    bottom: 0;
+    bottom: 2;
     padding: 3px;	
 }
 #coordinate{
