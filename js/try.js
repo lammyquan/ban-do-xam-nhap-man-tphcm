@@ -97,7 +97,7 @@ var RanhmanWMS = L.tileLayer.wms("http://localhost:8080/geoserver/geospatial/wms
     format: 'image/png',
     transparent: true,
     attribution: ""
-})//.addTo(map);
+}).addTo(map);
 
 var Nongnghiep = L.tileLayer.wms("http://localhost:8080/geoserver/geospatial/wms", {
     layers: 'geospatial:nongthuysan',
@@ -135,7 +135,7 @@ var overlays = {
     "Trạm đo mặn": tramdoman,
     "Đất nông nghiệp": Nongnghiep,
     "Đường ranh mặn": ranhman,
-    //"Mặn": RanhmanWMS,
+    "Mặn": RanhmanWMS,
  };
 
 
