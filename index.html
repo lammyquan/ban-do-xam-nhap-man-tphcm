@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>XÂM NHẬP MẶN</title>
+    <title>Map2</title>
 
      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
    integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
@@ -14,12 +14,25 @@
 
 </head>
 <body>   
-
-<div class ="row">
+<div class ="container">
+    <div class="fillter">
+      <div class="heading">            
+            <h2>Chú giải</h2>
+        </div>
+        <div class="legend">
+            <h4>Loại đất</h4>
+            <img src="http://localhost:8080/geoserver/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=geospatial:nongthuysan">
+            <h4>Ranh mặn</h4>
+            <img src="http://localhost:8080/geoserver/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=geospatial:ranhmanhcm">
+            <h4>Lan truyền mặn</h4>
+            <img src="http://localhost:8080/geoserver/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=geospatial:ManHCM_decimal">
+        </div>
+    </div>
 <div id="map">
     
     <div id="coordinate"></div>
  
+</div>
 </div>
 
  <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
@@ -36,6 +49,8 @@
   <script type="text/javascript" src="data/tramdoman.js"></script> 
   <script type="text/javascript" src="data/Ranhgioihcm.js"></script>  
   <script type="text/javascript" src="data/ranhmanhcm.js"></script>
+  <script type="text/javascript" src="data/clnvsnts.js"></script>
+  <script type="text/javascript" src="data/conlai.js"></script>
 
 
  <script type="text/javascript" src="js/try.js"></script>
