@@ -41,7 +41,8 @@ var marker = L.marker([10.7, 106.7]).addTo(map);
 
 //add geojsonStyle
 var RanhgioihcmStyle = {
-    color: "red",
+    color: "black",
+    fillColor: "horror",
     opacity: 0.3,
     weight:1,
 };
@@ -52,19 +53,22 @@ var tramdomanStyle = {
     weight:1,
 };
 var nongnghiepStyle = {
-    color: "Horror", 
+    color: "horror", 
 };
 
+
 var RanhmanStyle = { 
-    color: "red"
+    color: "horror",
 };
+
+
 
 //add geojson 
 
 var ranhman = L.geoJson(ranhman,{style:RanhmanStyle, 
     onEachFeature:function (feature, layer) {
     layer.bindPopup(feature.properties.description)
-}})//.addTo(map);
+}}).addTo(map);
 
 var ranhgioihcm = L.geoJson(Ranhgioihcm, {style:RanhgioihcmStyle,
 onEachFeature:function (feature, layer) {
@@ -78,8 +82,6 @@ onEachFeature:function (feature, layer) {
     label+=`center:${center_lng} , ${center_lat}<br>`
 
 
-
-
     layer.bindPopup(label)
 
 }}).addTo(map);
@@ -89,6 +91,30 @@ var tramdoman = L.geoJson(tramdoman,{pointToLayer:function(feature, latlng){
 },onEachFeature:function (feature, layer) {
     layer.bindPopup(feature.properties.name)
 }}).addTo(map);
+
+
+var clnvsnts = L.geoJson(clnvsnts,{style:nongnghiepStyle,
+    onEachFeature:function (feature, layer) {
+            area=(turf.area(feature)/1000000).toFixed(3)
+
+            label =`Tên: ${feature.properties.refname}<br>`
+            label +=`Loại: ${feature.properties.descriptio}<br>`
+            label +=`Diện tích: ${area}<br>`
+
+    layer.bindPopup(label) 
+}})//).addTo(map);
+
+var conlai = L.geoJson(conlai,{style:nongnghiepStyle,
+    onEachFeature:function (feature, layer) {
+            area=(turf.area(feature)/1000000).toFixed(3)
+
+
+            label =`Tên: ${feature.properties.refname}<br>`
+            label +=`Loại: ${feature.properties.descriptio}<br>`
+            label +=`Diện tích: ${area}<br>`
+
+    layer.bindPopup(label) 
+}})//.addTo(map);
 
 
 //add raster 
@@ -104,17 +130,20 @@ var Nongnghiep = L.tileLayer.wms("http://localhost:8080/geoserver/geospatial/wms
     format: 'image/png',
     transparent: true,
     attribution: ""
-}).addTo(map); 
+})//.addTo(map); 
 
 var ranhmancontour =  L.tileLayer.wms("http://localhost:8080/geoserver/geospatial/wms", {
     layers: 'geospatial:ranhmanhcm',
     format: 'image/png',
     transparent: true,
     attribution: ""
-})//.addTo(map); 
+}).addTo(map); 
 
 //Legend
 //layergroup
+var datnongnghiep = L.layerGroup([clnvsnts, conlai, Nongnghiep]).addTo(map);
+
+var Ranhman = L.layerGroup([ranhman, ranhmancontour]).addTo(map);
 
 
 //  Basemaps
@@ -133,16 +162,15 @@ var overlays = {
     // "Roads": roadsLayer
     "Ranh giới": ranhgioihcm,
     "Trạm đo mặn": tramdoman,
-    "Đất nông nghiệp": Nongnghiep,
-    "Đường ranh mặn": ranhman,
+    "Đất nông nghiệp": datnongnghiep,
+    "Đường ranh mặn": Ranhman,
     "Mặn": RanhmanWMS,
  };
 
 
 
-
 //  Add layer control to map 
-L.control.layers(baseLayers, overlays,{position: 'topright'}).addTo(map);
+L.control.layers(baseLayers, overlays, {position: 'topright'}).addTo(map);
 
 // Add leaflet browser print control to map
 
