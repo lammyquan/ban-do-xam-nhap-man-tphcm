@@ -13,17 +13,19 @@
 
 #map { 
 	height: 100vh;
-	width:80vw; }
+	width:100vw; 
+}
 
 .fillter{
 	width: 20vw;
 	height: 100vh;
 	overflow: auto;
-	background: white;
+	background: #fff;
 	top: 0;
 	left:0;
 	text-align: left;
 	z-index: 2;
+	transition: 1s;
 
 }
 
@@ -44,6 +46,7 @@
 .fillter .legend {
 	padding: 0 1rem;
 	margin: 1rem 0;
+	background: white;
 }
 
 #coordinate{
@@ -55,3 +58,13 @@
     bottom: 0;
     padding: 3px;
 }
+
+.container button {
+	background: skyblue;
+	width: 30px;
+	height: 60px;
+	border: skyblue;
+
+}
+
+
