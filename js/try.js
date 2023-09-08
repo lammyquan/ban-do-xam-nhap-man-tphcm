@@ -187,3 +187,18 @@ map.on("mousemove",function(e) {
 
 //  Adding scale to map
 L.control.scale().addTo(map);
+
+//Menu
+    showLegend = true;  // default value showing the legend
+
+    var toggleLegend = function(){
+        if(showLegend === true){
+        /* use jquery to select your DOM elements that has the class 'legend' */
+           $('.fillter').hide(); 
+           showLegend = false; 
+        }else{
+           $('.fillter').show();
+           showLegend = true; 
+        }
+
+    }
