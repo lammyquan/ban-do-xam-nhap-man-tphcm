@@ -66,5 +66,75 @@
 	border: skyblue;
 
 }
+@media(max-width: 600px){
 
+*{
+	box-sizing: border-box;
+	-webkit-font-smoothing: antialliased;
+	padding: 0;
+	margin: 0;
+}
+
+.container {
+	display: flex;
+}
+
+
+#map { 
+	height: 100vh;
+	width:600px; 
+}
+
+.fillter{
+	width: 500px;
+	height: 100vh;
+	overflow: auto;
+	background: #fff;
+	top: 0;
+	left:0;
+	text-align: left;
+	z-index: 2;
+	transition: 1s;
+
+}
+
+
+.fillter .heading {
+	background: skyblue;
+	color: white;
+	top: 0;
+	left:0;
+	text-align: left;
+	z-index: 2;
+}
+	
+.fillter .heading h2 {
+	padding: 1rem;
+}
+
+.fillter .legend {
+	padding: 0 1rem;
+	margin: 1rem 0;
+	background: white;
+}
+
+#coordinate{
+
+	position: absolute;
+	left: 40%;
+	background: #fff;
+	z-index: 99999;
+    bottom: 0;
+    padding: 3px;
+}
+
+.container button {
+	background: skyblue;
+	width: 30px;
+	height: 60px;
+	border: skyblue;
+
+}
+
+}
 
