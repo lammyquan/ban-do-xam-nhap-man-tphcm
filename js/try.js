@@ -37,7 +37,12 @@ var googleTerrain = L.tileLayer('http://{s}.google.com/vt/lyrs=p&x={x}&y={y}&z={
 
 var marker = L.marker([10.7, 106.7]).addTo(map);
 
-
+var myIcon = L.icon({
+    iconUrl: 'image/pulse2.png',
+    iconSize: [38, 35],
+    iconAnchor: [22, 94],
+    popupAnchor: [-3, -76],
+});
 
 //add geojsonStyle
 var RanhgioihcmStyle = {
@@ -48,8 +53,7 @@ var RanhgioihcmStyle = {
 };
 var tramdomanStyle = {
     radius:8,
-    fillColor: "green",
-    color: "green",
+    color: "orange",
     weight:1,
 };
 var nongnghiepStyle = {
@@ -58,7 +62,10 @@ var nongnghiepStyle = {
 
 
 var RanhmanStyle = { 
-    color: "horror",
+    color: "blue",
+    opacity: 0.1,
+    weight: 5,
+
 };
 
 
@@ -87,7 +94,7 @@ onEachFeature:function (feature, layer) {
 }}).addTo(map);
 
 var tramdoman = L.geoJson(tramdoman,{pointToLayer:function(feature, latlng){
-    return L.circleMarker(latlng,tramdomanStyle);
+    return L.marker(latlng, {icon:myIcon});
 },onEachFeature:function (feature, layer) {
     layer.bindPopup(feature.properties.name)
 }}).addTo(map);
@@ -137,13 +144,13 @@ var ranhmancontour =  L.tileLayer.wms("http://localhost:8080/geoserver/geospatia
     format: 'image/png',
     transparent: true,
     attribution: ""
-}).addTo(map); 
+})//.addTo(map); 
 
 //Legend
 //layergroup
 var datnongnghiep = L.layerGroup([clnvsnts, conlai, Nongnghiep]).addTo(map);
 
-var Ranhman = L.layerGroup([ranhman, ranhmancontour]).addTo(map);
+var Ranhman = L.layerGroup([ranhmancontour, ranhman]).addTo(map);
 
 
 //  Basemaps
@@ -176,6 +183,7 @@ L.control.layers(baseLayers, overlays, {position: 'topright'}).addTo(map);
 
 L.control.browserPrint({position: 'topleft'}).addTo(map);
 
+
 // mouse move Coordinate 
 map.on("mousemove",function(e) {
 	
@@ -183,10 +191,10 @@ map.on("mousemove",function(e) {
 })
 
 
-
-
 //  Adding scale to map
 L.control.scale().addTo(map);
+
+
 
 //Menu
     showLegend = true;  // default value showing the legend
