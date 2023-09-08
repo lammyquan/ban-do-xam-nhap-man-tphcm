@@ -171,7 +171,7 @@ var overlays = {
     "Trạm đo mặn": tramdoman,
     "Đất nông nghiệp": datnongnghiep,
     "Đường ranh mặn": Ranhman,
-    "Mặn": RanhmanWMS,
+    "Lan truyền mặn": RanhmanWMS,
  };
 
 
