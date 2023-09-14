@@ -51,11 +51,11 @@ var RanhgioihcmStyle = {
     opacity: 0.3,
     weight:1,
 };
-var tramdomanStyle = {
-    radius:8,
-    color: "orange",
-    weight:1,
-};
+//var tramdomanStyle = {
+//   radius:8,
+//    color: "orange",
+//    weight:1,
+//};
 var nongnghiepStyle = {
     color: "horror", 
 };
@@ -72,7 +72,14 @@ var RanhmanStyle = {
 
 //add geojson 
 
-var ranhman = L.geoJson(ranhman,{style:RanhmanStyle, 
+var ranhman = L.geoJson(ranhman,{
+    style: function (feature) {
+        switch (feature.properties.contour) {
+        case 0.25: return {color: 'lightblue'};
+        case 1.2: return {color: 'lightgreen'};
+        case 5: return {color: 'red'}
+        }
+    },
     onEachFeature:function (feature, layer) {
     layer.bindPopup(feature.properties.description)
 }}).addTo(map);
@@ -100,7 +107,13 @@ var tramdoman = L.geoJson(tramdoman,{pointToLayer:function(feature, latlng){
 }}).addTo(map);
 
 
-var clnvsnts = L.geoJson(clnvsnts,{style:nongnghiepStyle,
+var clnvsnts = L.geoJson(clnvsnts,{
+    style: function (feature) {
+        switch (feature.properties.refname) {
+        case "CLN": return {color: '#ffd2a0'};
+        case "NTS": return {color: '#aaffff'};
+        }
+    },
     onEachFeature:function (feature, layer) {
             area=(turf.area(feature)/1000000).toFixed(3)
 
@@ -109,9 +122,19 @@ var clnvsnts = L.geoJson(clnvsnts,{style:nongnghiepStyle,
             label +=`Diện tích: ${area}<br>`
 
     layer.bindPopup(label) 
-}})//).addTo(map);
+}})//.addTo(map);
 
-var conlai = L.geoJson(conlai,{style:nongnghiepStyle,
+var conlai = L.geoJson(conlai,{
+     style: function (feature) {
+        switch (feature.properties.refname) {
+        case "NKH": return {color: '#f5ffb4'};
+        case "BHK": return {color: '#fff0b4'};
+        case "LUK": return {color: '#fffc96'};
+        case "LUC": return {color: '#fffc8c'};
+        case "LUN": return {color: '#fffcb4'};
+        case "HNK": return {color: '#fff0b4'};
+        }
+    },
     onEachFeature:function (feature, layer) {
             area=(turf.area(feature)/1000000).toFixed(3)
 
@@ -130,7 +153,7 @@ var RanhmanWMS = L.tileLayer.wms("http://localhost:8080/geoserver/geospatial/wms
     format: 'image/png',
     transparent: true,
     attribution: ""
-}).addTo(map);
+})//.addTo(map);
 
 var Nongnghiep = L.tileLayer.wms("http://localhost:8080/geoserver/geospatial/wms", {
     layers: 'geospatial:nongthuysan',
@@ -148,9 +171,9 @@ var ranhmancontour =  L.tileLayer.wms("http://localhost:8080/geoserver/geospatia
 
 //Legend
 //layergroup
-var datnongnghiep = L.layerGroup([clnvsnts, conlai, Nongnghiep]).addTo(map);
+var datnongnghiep = L.layerGroup([clnvsnts, conlai]).addTo(map);
 
-var Ranhman = L.layerGroup([ranhmancontour, ranhman]).addTo(map);
+//var Ranhman = L.layerGroup([ranhmancontour, ranhman]).addTo(map);
 
 
 //  Basemaps
@@ -170,8 +193,8 @@ var overlays = {
     "Ranh giới": ranhgioihcm,
     "Trạm đo mặn": tramdoman,
     "Đất nông nghiệp": datnongnghiep,
-    "Đường ranh mặn": Ranhman,
-    "Lan truyền mặn": RanhmanWMS,
+    "Đường ranh mặn": ranhman,
+    "Mặn": RanhmanWMS,
  };
 
 
